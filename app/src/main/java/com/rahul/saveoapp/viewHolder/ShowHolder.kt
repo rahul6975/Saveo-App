@@ -9,15 +9,12 @@ import com.rahul.saveoapp.modelClass.ResponseClass
 import com.rahul.saveoapp.modelClass.ShowClass
 import kotlinx.android.synthetic.main.item_layout.view.*
 
-class ShowHolder(private val view: View, private val clickListener: ClickListener) :
+class ShowHolder(private val view: View) :
     RecyclerView.ViewHolder(view) {
 
     fun setData(showClass: ShowClass) {
         view.apply {
             Glide.with(showImage).load(showClass.image!!.original).into(showImage)
-        }
-        view.setOnClickListener {
-            clickListener.onClick(adapterPosition)
         }
     }
 }

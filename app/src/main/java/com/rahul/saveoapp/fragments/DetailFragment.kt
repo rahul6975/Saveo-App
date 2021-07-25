@@ -27,20 +27,22 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        detailViewModel = ViewModelProviders.of(this).get(DetailViewModel::class.java)
+        detailViewModel = ViewModelProviders.of(requireActivity()).get(DetailViewModel::class.java)
         detailViewModel.showShowDetails().observe(this.requireActivity(), Observer {
             verticalList = it
             setData()
         })
+
     }
 
     private fun setData() {
         Glide.with(imgShowImage).load(verticalList.image!!.original).into(imgShowImage)
         tvShowName.text = verticalList.name
-        tvRating.text = verticalList.rating!!.any.toString()
+        tvRating.text = verticalList.language
         tvTime.text = verticalList.runtime.toString()
         tvDate.text = verticalList.premiered
         tvDesciption.text = verticalList.summary
 
     }
+
 }

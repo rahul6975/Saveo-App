@@ -10,12 +10,11 @@ import com.rahul.saveoapp.viewHolder.ShowHolder
 
 class ShowAdapter(
     private var showList: List<ResponseClass>,
-    private val clickListener: ClickListener
 ) :
     RecyclerView.Adapter<ShowHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShowHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_layout, parent, false)
-        return ShowHolder(view, clickListener)
+        return ShowHolder(view)
     }
 
     override fun onBindViewHolder(holder: ShowHolder, position: Int) {

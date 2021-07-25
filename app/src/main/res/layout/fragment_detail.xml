@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/white"
     android:layout_height="match_parent"
     tools:context=".fragments.DetailFragment">
 
@@ -35,12 +36,13 @@
 
                 <TextView
                     android:id="@+id/tvMovies"
-                    android:layout_width="@dimen/sp_25"
-                    android:layout_height="@dimen/sp_25"
-                    android:layout_marginTop="@dimen/dp_20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_10"
                     android:fontFamily="@font/average_sans"
                     android:text="@string/movies"
                     android:textColor="@color/white"
+                    android:textSize="@dimen/sp_20"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -76,7 +78,7 @@
                     android:fontFamily="@font/average_sans"
                     android:text="@string/movie_name"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/sp_30"
+                    android:textSize="@dimen/sp_25"
                     app:layout_constraintStart_toEndOf="@id/imgShowImage"
                     app:layout_constraintTop_toBottomOf="@id/tvMovies" />
 
@@ -152,11 +154,12 @@
 
                     <TextView
                         android:layout_width="60dp"
-                        android:layout_height="20dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:textSize="10sp"
                         android:background="@drawable/curve_bg"
                         android:fontFamily="@font/average_sans"
-                        android:text="  CRIME"
+                        android:text="   CRIME"
                         android:textColor="@color/white" />
 
                     <TextView
@@ -164,9 +167,10 @@
                         android:layout_height="20dp"
                         android:layout_marginStart="@dimen/dp_10"
                         android:layout_weight="1"
+                        android:textSize="@dimen/sp_10"
                         android:background="@drawable/curve_bg"
                         android:fontFamily="@font/average_sans"
-                        android:text=" MYSTERY"
+                        android:text="   MYSTERY"
                         android:textColor="@color/white" />
 
                     <TextView
@@ -174,9 +178,10 @@
                         android:layout_height="20dp"
                         android:layout_marginStart="@dimen/dp_10"
                         android:layout_weight="1"
+                        android:textSize="10sp"
                         android:background="@drawable/curve_bg"
                         android:fontFamily="@font/average_sans"
-                        android:text="  DRAMA"
+                        android:text="   DRAMA"
                         android:textColor="@color/white" />
 
                 </LinearLayout>
@@ -197,7 +202,7 @@
                 android:id="@+id/tvSynopsis"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/dp_30"
+                android:layout_margin="@dimen/dp_10"
                 android:fontFamily="@font/average_sans"
                 android:text="@string/synopsis"
                 android:textColor="@color/black"
@@ -209,7 +214,8 @@
                 android:id="@+id/tvDesciption"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/dp_20"
+                android:layout_margin="@dimen/dp_10"
+                android:padding="@dimen/dp_10"
                 android:layout_marginTop="@dimen/dp_20"
                 android:fontFamily="@font/average_sans"
                 android:textColor="@color/black"
