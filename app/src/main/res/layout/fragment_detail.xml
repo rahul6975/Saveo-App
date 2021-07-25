@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.DetailFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/contraintLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#1A506D"
+                android:paddingBottom="@dimen/dp_40"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <ImageView
+                    android:id="@+id/imgBack"
+                    android:layout_width="@dimen/dp_25"
+                    android:layout_height="@dimen/dp_25"
+                    android:layout_margin="@dimen/dp_20"
+                    android:src="@drawable/back_arrow"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <TextView
+                    android:id="@+id/tvMovies"
+                    android:layout_width="@dimen/sp_25"
+                    android:layout_height="@dimen/sp_25"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:fontFamily="@font/average_sans"
+                    android:text="@string/movies"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <ImageView
+                    android:id="@+id/imgShare"
+                    android:layout_width="@dimen/dp_25"
+                    android:layout_height="@dimen/dp_25"
+                    android:layout_margin="@dimen/dp_20"
+                    android:src="@drawable/share"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imgShowImage"
+                    android:layout_width="@dimen/dp_150"
+                    android:layout_height="@dimen/dp_200"
+                    android:layout_marginStart="@dimen/dp_20"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_launcher_background"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/imgBack" />
+
+
+                <TextView
+                    android:id="@+id/tvShowName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:fontFamily="@font/average_sans"
+                    android:text="@string/movie_name"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sp_30"
+                    app:layout_constraintStart_toEndOf="@id/imgShowImage"
+                    app:layout_constraintTop_toBottomOf="@id/tvMovies" />
+
+                <TextView
+                    android:id="@+id/tvRating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:fontFamily="@font/average_sans"
+                    android:text="@string/rating"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sp_15"
+                    app:layout_constraintStart_toEndOf="@id/imgShowImage"
+                    app:layout_constraintTop_toBottomOf="@id/tvShowName" />
+
+                <TextView
+                    android:id="@+id/tvHash1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_5"
+                    android:fontFamily="@font/average_sans"
+                    android:text="@string/hash"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sp_15"
+                    app:layout_constraintStart_toEndOf="@id/tvRating"
+                    app:layout_constraintTop_toBottomOf="@id/tvShowName" />
+
+                <TextView
+                    android:id="@+id/tvTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_5"
+                    android:fontFamily="@font/average_sans"
+                    android:text="@string/time"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sp_15"
+                    app:layout_constraintStart_toEndOf="@id/tvHash1"
+                    app:layout_constraintTop_toBottomOf="@id/tvShowName" />
+
+
+                <TextView
+                    android:id="@+id/hash2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_5"
+                    android:fontFamily="@font/average_sans"
+                    android:text="@string/hash"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sp_15"
+                    app:layout_constraintStart_toEndOf="@id/tvTime"
+                    app:layout_constraintTop_toBottomOf="@id/tvShowName" />
+
+                <TextView
+                    android:id="@+id/tvDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_5"
+                    android:fontFamily="@font/average_sans"
+                    android:text="@string/date"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sp_15"
+                    app:layout_constraintStart_toEndOf="@id/hash2"
+                    app:layout_constraintTop_toBottomOf="@id/tvShowName" />
+
+                <LinearLayout
+                    android:id="@+id/linearLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_marginTop="@dimen/dp_20"
+                    app:layout_constraintStart_toEndOf="@id/imgShowImage"
+                    app:layout_constraintTop_toBottomOf="@id/tvDate">
+
+                    <TextView
+                        android:layout_width="60dp"
+                        android:layout_height="20dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/curve_bg"
+                        android:fontFamily="@font/average_sans"
+                        android:text="  CRIME"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:layout_width="65dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="@dimen/dp_10"
+                        android:layout_weight="1"
+                        android:background="@drawable/curve_bg"
+                        android:fontFamily="@font/average_sans"
+                        android:text=" MYSTERY"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:layout_width="60dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="@dimen/dp_10"
+                        android:layout_weight="1"
+                        android:background="@drawable/curve_bg"
+                        android:fontFamily="@font/average_sans"
+                        android:text="  DRAMA"
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_marginTop="@dimen/dp_30"
+                    android:src="@drawable/stars"
+                    app:layout_constraintStart_toEndOf="@id/imgShowImage"
+                    app:layout_constraintTop_toBottomOf="@id/linearLayout" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <TextView
+                android:id="@+id/tvSynopsis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp_30"
+                android:fontFamily="@font/average_sans"
+                android:text="@string/synopsis"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_20"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/contraintLayout" />
+
+            <TextView
+                android:id="@+id/tvDesciption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp_20"
+                android:layout_marginTop="@dimen/dp_20"
+                android:fontFamily="@font/average_sans"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_20"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvSynopsis" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
