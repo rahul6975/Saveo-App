@@ -9,9 +9,11 @@ class Network {
 
     companion object {
 
+        // helps us to log the response
         private val httpLoggingInterceptor =
             HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
 
+        // create the retrofit builder
         fun getInstance(): Retrofit {
             return Retrofit.Builder()
                 .baseUrl("https://api.tvmaze.com/")

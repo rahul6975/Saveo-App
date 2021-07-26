@@ -27,6 +27,7 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // subscribe the livedata
         detailViewModel = ViewModelProviders.of(requireActivity()).get(DetailViewModel::class.java)
         detailViewModel.showShowDetails().observe(this.requireActivity(), Observer {
             verticalList = it
@@ -35,6 +36,7 @@ class DetailFragment : Fragment() {
 
     }
 
+    // set the data on UI which we received from the livedata
     private fun setData() {
         Glide.with(imgShowImage).load(verticalList.image!!.original).into(imgShowImage)
         tvShowName.text = verticalList.name

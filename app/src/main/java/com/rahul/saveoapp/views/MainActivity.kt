@@ -18,13 +18,14 @@ class MainActivity : AppCompatActivity() {
     private fun addFragment() {
         val baseFragment = BaseFragment()
         /*
-           This is the method used to send FragmentListener from Activity to LandingFragment
+           This is the method used to send FragmentListener from Activity to BaseFragment
         */
         supportFragmentManager.beginTransaction()
             .add(R.id.fragment1, baseFragment, "baseFragment").addToBackStack(null)
             .commit()
     }
 
+    //check if fragments are still alive
     override fun onBackPressed() {
 //        super.onBackPressed()
         val fragment = fragmentManager.findFragmentById(R.id.fragment1)

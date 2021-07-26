@@ -8,6 +8,7 @@ import com.rahul.saveoapp.interfaces.ClickListener
 import com.rahul.saveoapp.modelClass.ResponseClass
 import com.rahul.saveoapp.viewHolder.ShowHolder
 
+//adapter class which holds the data
 class ShowAdapter(
     private var showList: List<ResponseClass>,
 ) :
@@ -25,6 +26,8 @@ class ShowAdapter(
     override fun getItemCount(): Int {
         return showList.size
     }
+
+    // notifies the adapter everytime new data is received
 
     fun updateData(showList: List<ResponseClass>) {
         this.showList = showList

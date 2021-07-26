@@ -13,6 +13,7 @@ import kotlinx.android.synthetic.main.vertical_item.view.*
 class VerticalHolder(private val view: View, private val clickListener: ClickListener) :
     RecyclerView.ViewHolder(view) {
 
+    // set the incoming data on each view of our recyclerview
     fun setData(imageClasss: ImageClasss) {
         view.apply {
             Glide.with(showImage2).load(imageClasss.original).into(showImage2)

@@ -32,10 +32,6 @@ class BaseFragment : Fragment(), ClickListener {
     private lateinit var detailViewModel: DetailViewModel
     private var movieList: List<ResponseClass> = listOf()
     private var verticalList: List<HorizonalClass> = listOf()
-    private var loading = true
-    var pastVisiblesItems = 0
-    var visibleItemCount: Int = 0
-    var totalItemCount: Int = 0
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -51,32 +47,37 @@ class BaseFragment : Fragment(), ClickListener {
         hitApi()
     }
 
+    //sets the recyclerview
     private fun setRecyclerView() {
         showAdapter = ShowAdapter(movieList)
         val linearLayoutManager = LinearLayoutManager(this.context)
         linearLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
         recyclerview.layoutManager = linearLayoutManager
         recyclerview.adapter = showAdapter
+        var isLastPage: Boolean = false
+        var isLoading: Boolean = false
 
-        recyclerview.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                if (dy > 0) { //check for scroll down
-                    visibleItemCount = linearLayoutManager.getChildCount()
-                    totalItemCount = linearLayoutManager.getItemCount()
-                    pastVisiblesItems = linearLayoutManager.findFirstVisibleItemPosition()
-                    if (loading) {
-                        if (visibleItemCount + pastVisiblesItems >= totalItemCount) {
-                            loading = false
-                            Log.d("hello", "Last Item Wow !")
-                            CoroutineScope(Dispatchers.IO).launch {
-                                viewModel.getMovie()
-                            }
-                            loading = true
-                        }
-                    }
-                }
+        recyclerview.addOnScrollListener(object : PaginationScrollListener(linearLayoutManager) {
+            override fun isLastPage(): Boolean {
+                return isLastPage
+            }
+
+            override fun isLoading(): Boolean {
+                return isLoading
+            }
+
+            override fun loadMoreItems() {
+                isLoading = true
+                //you have to call loadmore items to get more data
+                hitApi()
             }
         })
+
+        fun getMoreItems() {
+            isLoading = false
+
+            showAdapter.updateData(movieList)
+        }
 
 
 
@@ -85,31 +86,14 @@ class BaseFragment : Fragment(), ClickListener {
         verticalrecyclerview.layoutManager = gridLayoutManager
         verticalrecyclerview.adapter = verticalAdapter
 
-        verticalrecyclerview.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                if (dy > 0) { //check for scroll down
-                    visibleItemCount = gridLayoutManager.getChildCount()
-                    totalItemCount = gridLayoutManager.getItemCount()
-                    pastVisiblesItems = gridLayoutManager.findFirstVisibleItemPosition()
-                    if (loading) {
-                        if (visibleItemCount + pastVisiblesItems >= totalItemCount) {
-                            loading = false
-                            Log.v("...", "Last Item Wow !")
-                            CoroutineScope(Dispatchers.IO).launch {
-                                viewModel.getMovie2()
-                            }
-                            loading = true
-                        }
-                    }
-                }
-            }
-        })
     }
 
+    //hit the api and notify our adapter that new data has been received
     private fun hitApi() {
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
         viewModel.getMovie().observe(this.requireActivity(), Observer {
-            showAdapter.updateData(it)
+            movieList = it
+            showAdapter.updateData(movieList)
         })
 
         viewModel.getMovie2().observe(this.requireActivity(), Observer {
@@ -118,11 +102,43 @@ class BaseFragment : Fragment(), ClickListener {
         })
     }
 
+
+    /*
+     this function gets triggered when we click any viewHolder in recyclerview
+      and gives us the position of the view
+    */
+
     override fun onClick(position: Int) {
         detailViewModel.getShowDetails(verticalList[position])
         val detailFragment = DetailFragment()
         requireActivity().supportFragmentManager.beginTransaction()
             .add(R.id.fragment1, detailFragment, "detailFragment").addToBackStack(null).commit()
+    }
+
+    // pagination for infinite scrolling
+
+    abstract class PaginationScrollListener
+        (var layoutManager: LinearLayoutManager) : RecyclerView.OnScrollListener() {
+
+        abstract fun isLastPage(): Boolean
+
+        abstract fun isLoading(): Boolean
+
+        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+            super.onScrolled(recyclerView, dx, dy)
+
+            val visibleItemCount = layoutManager.childCount
+            val totalItemCount = layoutManager.itemCount
+            val firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition()
+
+            if (!isLoading() && !isLastPage()) {
+                if (visibleItemCount + firstVisibleItemPosition >= totalItemCount && firstVisibleItemPosition >= 0) {
+                    loadMoreItems()
+                }//                    && totalItemCount >= ClothesFragment.itemsCount
+            }
+        }
+
+        abstract fun loadMoreItems()
     }
 
 }

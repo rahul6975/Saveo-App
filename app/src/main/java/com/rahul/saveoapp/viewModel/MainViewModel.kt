@@ -21,6 +21,7 @@ class MainViewModel : ViewModel() {
 
     private val repository = MainRespository()
 
+    //hit the api and release the response using livedata
     fun getMovie(): LiveData<List<ResponseClass>> {
         return liveData(Dispatchers.IO) {
             val result = repository.getListOfMovies()
