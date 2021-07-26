@@ -5,7 +5,7 @@
 </p>
 
 <p align="center"> 
-This is an android demo project based on modern Android application tech-stacks and MVVM architecture. The app uses Retrofit to get response from API and display list of some popular TV shows.
+This is an android demo project based on modern Android application tech-stacks and MVVM architecture. The app uses Retrofit to get response from API and display list of some popular TV shows using Pagination.
 </p>
 
 ## App Screenshots
@@ -30,6 +30,7 @@ This is an android demo project based on modern Android application tech-stacks 
   - LiveData - notify domain layer data to views.
   - Lifecycle - observing data when lifecycle state changes.
   - ViewModel - lifecycle aware UI related data holder.
+  - Pagination - Infinite scrolling for RecyclerView.
 - Architecture
   - MVVM Architecture (View - ViewModel) 
 - [Retrofit](https://square.github.io/retrofit/) - for getting response from API
